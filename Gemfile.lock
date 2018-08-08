@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     quick_login (0.1.0)
-      devise (~> 4.2.0)
-      rails (~> 5.0.7)
+      devise (>= 4.2.0)
+      rails (>= 5.0.0)
 
 GEM
   remote: https://rubygems.org/

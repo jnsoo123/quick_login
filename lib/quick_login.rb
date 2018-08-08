@@ -42,6 +42,6 @@ module QuickLogin
     table = content_tag(:table, thead.concat(tbody), class: 'table table-bordered')
     title = content_tag(:h3, 'Quick Login - This should only be present in Development environment')
 
-    content_tag(:div, title.concat(table))
+    content_tag(:div, title.concat(table), style: 'display: inline-block;')
   end
 end
