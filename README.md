@@ -5,8 +5,11 @@ Quick Login Engine that uses Devise Gem in an app.
 Use the view helper in your views with a parameter of a model that uses `Devise`
 NOTE: This will raise an error if your model doesn't have devise included.
 
-```ruby
-quick_login_table User
+```erb
+<html>
+<!-- some html codes -->
+<%= quick_login_table User %>
+</html>
 ```
 
 By default, it'll show all the fields except for timestamp and devise fields:
@@ -19,25 +22,23 @@ By default, it'll show all the fields except for timestamp and devise fields:
 
 But you can add `show_fields` parameter to display the fields you wanted.
 
-```ruby
-quick_login_table User, show_fields: [:first_name, :last_name, :age]
+```erb
+<html>
+<!-- some html codes -->
+<%= quick_login_table User, show_fields: [:first_name, :last_name, :age] %>
+</html>
 ```
 
 ## Installation
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'quick_login'
+gem 'quick_login', git: "https://github.com/jnsoo123/quick_login.git", branch: 'develop'
 ```
 
 And then execute:
 ```bash
 $ bundle
-```
-
-Or install it yourself as:
-```bash
-$ gem install quick_login
 ```
 
 ## Contributing
