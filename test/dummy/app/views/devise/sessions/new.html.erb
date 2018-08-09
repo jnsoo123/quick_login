@@ -24,4 +24,4 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
-<%= quick_login_table User %>
+<%= quick_login_table User, show_fields: [:name, :user_group] %>
