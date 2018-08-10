@@ -30,11 +30,10 @@ By default, it'll show all the fields except for timestamp and devise fields:
 ```
 
 But you can customize the fields by adding the `show_fields` parameter to display the fields you wanted.
-
 ```erb
 <html>
 <!-- some html codes -->
-<%= quick_login_table User, show_fields: [:first_name, :last_name, :age] %>
+<%= quick_login_table User, fields: [:first_name, :last_name, :age] %>
 </html>
 ```
 

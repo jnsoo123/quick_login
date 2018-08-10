@@ -118,6 +118,7 @@ module QuickLogin
         end
       end
 
+      # To check the validity of the attributes
       def valid_attribute?(field)
         model_attributes.include?(field) || field != :action
       end
