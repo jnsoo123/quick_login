@@ -4,6 +4,7 @@ module QuickLogin
     class TableRenderer
       include ActionView::Helpers
       include ActionView::Context
+      include QuickLogin::Engine.routes.url_helpers
 
       # Initializes the object
       def initialize(model, options)
@@ -18,11 +19,6 @@ module QuickLogin
       end
 
       private
-
-      # Routes of logging in to devise controller
-      def new_user_session_path
-        Rails.application.routes.url_helpers.new_user_session_path
-      end
 
       # Renders the title of the table
       def title
@@ -52,12 +48,11 @@ module QuickLogin
         end
       end
 
-      # Renders the td of the table with attributes 
+      # Renders the td of the table with attributes
       def td_column(resource, field)
-        case 
+        case
         when field == :action
-          params = { "#{@model.to_s.underscore}" => { email: resource.email, password: 'password' } }
-          concat content_tag(:td, button_to('Login', new_user_session_path, params: params))
+          concat content_tag(:td, link_to('Login', login_path(id: resource.id, model: @model)))
         when field.to_s.include?('_id')
           value = resource.send(field.to_s.gsub('_id', '')).try(:name).presence || resource.send(field)
           concat content_tag(:td, value)
@@ -88,7 +83,7 @@ module QuickLogin
         @model.columns.map(&:name).map(&:to_sym)
       end
 
-      # Fetches the fields to be displayed except for 
+      # Fetches the fields to be displayed except for
       # devise fields like :encrypted_passwords, :reset_password_token,
       # etc. and timestamp fields like :created_at and :updated_at
       def fields
