@@ -49,6 +49,12 @@ And then execute:
 $ bundle
 ```
 
+Next, you need to run the generator:
+```bash
+$ rails generate quick_login:install
+```
+This will generate the mountable route for this engine.
+
 ## Contributing
 Contribution directions go here.
 
