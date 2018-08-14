@@ -12,3 +12,7 @@ gemspec
 
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
+
+gem 'pry-rails', group: [:development, :test]
+
+gem 'devise', '~> 4.2.0'

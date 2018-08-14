@@ -1,14 +1,47 @@
 # QuickLogin
-Short description and motivation.
+Quick Login makes it easy for the developer to test its user permissions or access to its system by generating a table of user accounts with a login button. This will only show in developmental environment.
 
 ## Usage
-How to use my plugin.
+Use the view helper in your views with a parameter of a model that uses `Devise`.
+NOTE: This will raise an error if your model doesn't have devise included.
+
+```erb
+<html>
+<!-- some html codes -->
+<%= quick_login_table User %>
+</html>
+```
+
+You can also use other models with devise included like:
+
+```erb
+<html>
+<!-- some html codes -->
+<%= quick_login_table CustomerUser %>
+</html>
+```
+
+By default, it'll show all the fields except for timestamp and devise fields:
+```ruby
+[:encrypted_password, :reset_password_token,
+:reset_password_sent_at, :remember_created_at,
+:sign_in_count, :current_sign_in_ip, :last_sign_in_ip,
+:current_sign_in_at, :last_sign_in_at, :created_at, :updated_at]
+```
+
+But you can customize the fields by adding the `fields` parameter to display the fields you wanted.
+```erb
+<html>
+<!-- some html codes -->
+<%= quick_login_table User, fields: [:first_name, :last_name, :age] %>
+</html>
+```
 
 ## Installation
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'quick_login'
+gem 'quick_login', git: "https://github.com/jnsoo123/quick_login.git", branch: 'develop'
 ```
 
 And then execute:
@@ -16,10 +49,11 @@ And then execute:
 $ bundle
 ```
 
-Or install it yourself as:
+Next, you need to run the generator:
 ```bash
-$ gem install quick_login
+$ rails generate quick_login:install
 ```
+This will generate the mountable route for this engine.
 
 ## Contributing
 Contribution directions go here.
